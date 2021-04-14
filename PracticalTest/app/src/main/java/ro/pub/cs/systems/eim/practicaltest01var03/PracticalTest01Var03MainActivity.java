@@ -35,8 +35,18 @@ public class PracticalTest01Var03MainActivity extends AppCompatActivity {
             nr1 = firstNumber.getText().toString();
             nr2 = secondNumber.getText().toString();
 
-            nr1_1 = Integer.parseInt(nr1);
-            nr2_2 = Integer.parseInt(nr2);
+            if (nr1.isEmpty() || nr2.isEmpty()) {
+                Toast.makeText(getApplicationContext(), "Introduceti un numar!", Toast.LENGTH_LONG).show();
+                return;
+            }
+
+            try {
+                nr1_1 = Integer.parseInt(nr1);
+                nr2_2 = Integer.parseInt(nr2);
+            } catch (NumberFormatException nfe) {
+                Toast.makeText(getApplicationContext(), "Introduceti un numar, nu text!", Toast.LENGTH_LONG).show();
+                return;
+            }
 
             if(v.getId() == R.id.sum_button && nr1 != "" && nr2 != "") {
                 text = nr1 + " + " + nr2 + " = " + (nr1_1 + nr2_2);
@@ -82,9 +92,11 @@ public class PracticalTest01Var03MainActivity extends AppCompatActivity {
 
         firstNumber = (EditText)findViewById(R.id.number_1);
         firstNumber.setOnClickListener(buttonClickListener);
+        firstNumber.setText("");
 
         secondNumber = (EditText)findViewById(R.id.number_2);
         secondNumber.setOnClickListener(buttonClickListener);
+        secondNumber.setText("");
 
         result = (TextView)findViewById(R.id.result_calculate);
         result.setOnClickListener(buttonClickListener);

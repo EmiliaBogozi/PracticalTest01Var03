@@ -12,4 +12,5 @@ public interface Constants {
     final public static String RESULT_CALC = "result_calc";
     final public static String FIRST_NUMBER = "messag1";
     final public static String SECOND_NUMBER = "message2";
+    final public static int NO_TEXT = 1;
 }
